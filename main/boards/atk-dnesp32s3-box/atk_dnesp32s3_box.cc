@@ -7,6 +7,7 @@
 #include "config.h"
 #include "led/single_led.h"
 #include "i2c_device.h"
+#include "chsc5432_touch.h"
 
 #include <esp_log.h>
 #include <driver/i2c_master.h>
@@ -132,6 +133,7 @@ private:
     Button boot_button_;
     LcdDisplay* display_;
     XL9555_IN* xl9555_in_;
+    Chsc5432Touch* touch_ = nullptr;
     bool es8311_detected_ = false;
     
     void InitializeI2c() {
@@ -257,6 +259,7 @@ public:
         InitializeATK_ST7789_80_Display();
         xl9555_in_->SetOutputState(5, 1);
         xl9555_in_->SetOutputState(7, 1);
+        touch_ = new Chsc5432Touch(i2c_bus_, DISPLAY_WIDTH, DISPLAY_HEIGHT);
         InitializeButtons();
     }
 

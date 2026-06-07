@@ -43,4 +43,9 @@
 #define GPIO_LCD_D6 GPIO_NUM_9
 #define GPIO_LCD_D7 GPIO_NUM_46
 
+/* CHSC5432 触摸面板 (芯微 CHSC6x 系列) */
+#define TOUCH_I2C_ADDR          0x2E
+#define TOUCH_RST_PIN           GPIO_NUM_NC  /* 复用LCD复位 */
+#define TOUCH_INT_PIN           GPIO_NUM_NC  /* 轮询模式 */
+
 #endif // _BOARD_CONFIG_H_
